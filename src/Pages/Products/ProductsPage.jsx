@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import Product from "../../Components/Products/Product"
+import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function ProductsPage() {
+export default function ProductsPage({user, setUser}) {
 
     const [items, setItems] = useState([])
 
@@ -19,6 +20,12 @@ export default function ProductsPage() {
 
         <>
 
+            <HeaderCommon 
+                user = {user}
+                //@ts-ignore
+                serUser = {setUser}
+            />
+
             <section className="page-wrapper">
 
                 <ul className="products-wrapper">
@@ -30,6 +37,9 @@ export default function ProductsPage() {
                             <Product 
                                 key = {item.id}
                                 item = {item}
+                                user = {user}
+                                items = {items}
+                                setItems = {setItems}
                             />
                             
                         )

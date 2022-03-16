@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
+import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function SignInPage() {
+export default function SignInPage({user, setUser}) {
 
     const navigate = useNavigate()
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
-    const [formSignIn, setFormSignIn] = useState(null)
 
     function handleUserNameChangeSignIn(e) {
         e.preventDefault()
@@ -23,7 +23,9 @@ export default function SignInPage() {
     }
 
     function handleFormSubmitSignIn(e) {
+
         e.preventDefault()
+
         const username = e.target.username.value
         const password = e.target.password.value
         
@@ -31,20 +33,46 @@ export default function SignInPage() {
             username: username,
             password: password
         }
+        
+        fetch('http://localhost:4000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        
+            if (data.error) {
+                alert(data.error)
+            } 
+            
+            else {
+                // we managed to sign in!
+                localStorage.setItem('token', data.token)
+                setUser(data.user)
+                navigate('/orders')
+            }
 
-        setFormSignIn(formData)
-        navigate('/orders')
+        })
+
     }
 
     return (
 
         <>
         
+            <HeaderCommon 
+                user = {user}
+                //@ts-ignore
+                serUser = {setUser}
+            />
+
             <section className="container-login">
 
                 <form className="form-login" 
                     onSubmit={function (e) {
-                        e.preventDefault()
                         handleFormSubmitSignIn(e)
                     }}
                 >

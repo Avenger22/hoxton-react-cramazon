@@ -3,13 +3,14 @@ import "./ProductItem.css"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
+import HeaderCommon from "../../Components/Common/HeaderCommon"
 // #endregion
 
 const randColour = ["green", "red", "blue", "yellow"][
     Math.floor(Math.random() * 4)
 ];
 
-export default function ProductItemPage() {
+export default function ProductItemPage({user, setUser}) {
 
     const params = useParams()
     const navigate = useNavigate()
@@ -39,6 +40,12 @@ export default function ProductItemPage() {
     return (
 
         <>
+
+            <HeaderCommon 
+                user = {user}
+                //@ts-ignore
+                serUser = {setUser}
+            />
 
             <section className='container-product-item'>
 

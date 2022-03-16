@@ -1,9 +1,10 @@
 import { useState } from "react"
 import {useNavigate } from "react-router"
-import OrderItem from "../../Components/Orders/Order"
+import Order from "../../Components/Orders/Order"
 import "./Orders.css"
+import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function OrdersPage() {
+export default function OrdersPage({user, setUser}) {
 
     const [items, setItems] = useState([])
     const navigate = useNavigate()
@@ -30,6 +31,12 @@ export default function OrdersPage() {
     return (
 
         <>
+
+            <HeaderCommon 
+                user = {user}
+                //@ts-ignore
+                serUser = {setUser}
+            />
 
             <div className="bag-menus-wrapper">
 

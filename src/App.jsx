@@ -5,8 +5,41 @@ import SignInPage from './Pages/SignIn/SignInPage'
 import ProductsPage from './Pages/Products/ProductsPage'
 import OrdersPage from './Pages/Orders/OrdersPage'
 import ProductItemPage from './Pages/ProductItem/ProductItemPage'
+import { useEffect, useState } from 'react'
 
 function App() {
+
+  const [user, setUser] = useState(null)
+  
+  useEffect(() => {
+
+    if (localStorage.token) {
+
+      fetch('http://localhost:4000/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: localStorage.token })
+      })
+        .then(resp => resp.json())
+        .then(data => {
+
+          if (data.error) {
+            // token was not good, we got an error back
+            alert('Invalid token!')
+          } 
+          
+          else {
+            // token is good, we get the user back
+            setUser(data)
+          }
+
+        })
+
+    }
+
+  }, [])
 
   return (
 
@@ -21,27 +54,27 @@ function App() {
 
         <Route 
           path = "/login" 
-          element = {<SignInPage />}>
+          element = {<SignInPage user = {user} setUser = {setUser} />}>
         </Route>
 
         <Route 
           path = "/products" 
-          element = {<ProductsPage />}>
+          element = {<ProductsPage user = {user} setUser = {setUser} />}>
         </Route>
 
         <Route 
             path = "/products/:id" 
-            element = {<ProductItemPage />}>
+            element = {<ProductItemPage user = {user} setUser = {setUser} />}>
         </Route>
 
         <Route 
             path = "/orders" 
-            element = {<OrdersPage />}>
+            element = {<OrdersPage user = {user} setUser = {setUser} />}>
         </Route>
 
         <Route 
             path = "/signup" 
-            element = {<SignUpPage />}>
+            element = {<SignUpPage user = {user} setUser = {setUser} />}>
         </Route>
 
       </Routes>

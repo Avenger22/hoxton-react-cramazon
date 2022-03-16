@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css"
+import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function SignUpPage() {
+export default function SignUpPage({user, setUser}) {
     
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
@@ -10,7 +11,6 @@ export default function SignUpPage() {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [formSignUp, setFormSignUp] = useState(null)
 
     function getUsersFromServer() {
     
@@ -28,6 +28,8 @@ export default function SignUpPage() {
 
     function handleFormSubmitSignUp(e) {
 
+        e.preventDefault()
+        
         const formData = {
             fullName: fullName,
             userName: userName,
@@ -35,7 +37,27 @@ export default function SignUpPage() {
             password: password
         }
 
-        setFormSignUp(formData)
+        fetch('http://localhost:4000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+
+            if (data.error) {
+                alert('Oops, something went wrong.')
+            } 
+            
+            else {
+                // we managed to create our user!
+                localStorage.setItem('token', data.token)
+                setUser(data.user)
+            }
+
+        })
 
     }
 
@@ -57,6 +79,12 @@ export default function SignUpPage() {
 
         <>
         
+            <HeaderCommon 
+                user = {user}
+                //@ts-ignore
+                serUser = {setUser}
+            />
+
             <section className="container-register">
 
                 <form 
@@ -64,7 +92,7 @@ export default function SignUpPage() {
                     onSubmit={function (e) {
                         e.preventDefault()
                         handleFormSubmitSignUp(e)
-                        navigate(`/sign-in`)
+                        navigate(`/login`)
                     }}
                 >
 

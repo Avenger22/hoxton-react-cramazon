@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router"
 import "../Products/Product.css"
 
-function Product({item}) {
+function Product({item, user, items, setItems}) {
 
     const navigate = useNavigate()
 
@@ -9,6 +9,39 @@ function Product({item}) {
         e.preventDefault()
         e.stopPropagation()
         navigate(`/products/${item.id}`)
+    }
+
+    function handleButtonAddBasket(item) {
+
+        if (user) {
+
+            let itemsCopy = JSON.parse(JSON.stringify(items))
+            const index = itemsCopy.findIndex(target => target.id === item.id)
+            const item = itemsCopy[index]
+
+            if (item.stock > 0) {
+
+                const newItem = {
+                    ...item,
+                    quantity: item.quantity ? item.quantity + 1 : 1,
+                    stock: item.stock - 1
+                }
+
+                itemsCopy[index] = newItem
+                setItems(itemsCopy)
+
+            }
+
+            else {
+                alert('You cannot add an item in the bag with no stock')
+            }
+
+        }
+
+        else {
+            alert('You need to be signed in to add to bag')
+        }
+
     }
 
     return (
