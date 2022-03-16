@@ -1,0 +1,88 @@
+section.container-login {
+    height: 120vh;
+    width: 100%;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    place-items: center;
+    background-color: rgb(188, 188, 199);
+}
+
+form.form-login {
+    display: grid;
+    grid-template-rows: 1fr;
+    place-items: center;
+
+    width: 700px;
+    height: 550px;
+    margin-top: 20px;
+    background-color: rgb(255, 174, 53);
+}
+
+.container-form {
+    display: grid;
+    grid-template-rows: 0.1fr 0.3fr 0.3fr 0.2fr 0.1fr;
+    grid-gap: 30px;
+
+    width: 500px;
+    background-color: #fff;
+    height: 420px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.container-form label {
+    display: grid;
+    grid-template-rows: 50px 50px;
+}
+
+.container-form label input {
+    outline: none;
+    border: none;
+    font-size: 18px;
+    padding: 10px 10px;
+}
+
+.container-form label span {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.container-form h1 {
+    font-size: 22px;
+    font-weight: 800;
+
+    display: grid;
+    place-self: center;
+    color: rgb(241, 23, 23);
+    border-bottom: 3px solid rgb(17, 16, 16);
+}
+
+.container-form button {
+    padding: 15px 15px;
+    outline: none;
+    border: none;
+    color: rgb(221, 215, 215);
+    background-color: rgb(177, 40, 40);
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    font-weight: 600;
+}
+
+.container-form button:hover {
+    color: #000;
+    background-color: rgb(206, 88, 88);
+}
+
+.container-form p {
+    font-size: 16px;
+    color: rgb(52, 50, 182);
+}
