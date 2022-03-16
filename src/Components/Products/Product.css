@@ -1,0 +1,247 @@
+section.container-menus .store-item {
+    display: grid;
+    grid-template-rows: 0.1fr 0.5fr 0.1fr 0.2fr 40px;
+    grid-gap: 10px 15px;
+    cursor: pointer;
+    padding: 15px 15px;
+}
+
+section.container-menus .store-item-no-date {
+    display: grid;
+    grid-template-rows: 0.6fr 0.1fr 0.2fr 40px;
+    grid-gap: 15px 15px;
+    cursor: pointer;
+    padding: 15px 15px;
+}
+
+section.container-menus .store-item:hover {
+    border: 1px solid #d40a0a;
+    margin-right: 1%;
+    margin-left: 1%;
+    transform: scale(1.02);
+    transition: 1s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
+}
+
+section.container-menus .store-item-no-date:hover {
+    border: 1px solid #d40a0a;
+    margin-right: 2%;
+    margin-left: 2%;
+    transform: scale(1.1);
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+section.container-menus .store-item:hover .span-2 {
+    font-size: 14px;
+}
+
+section.container-menus .store-item h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0066cc;
+}
+
+section.container-menus .store-item-no-date h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0066cc;
+}
+
+section.container-menus .store-item img {
+    height: 180px;
+    width: 190px;
+}
+
+section.container-menus .store-item-no-date img {
+    height: 170px;
+    width: 190px;
+}
+
+section.container-menus .store-item button {
+    padding: 15px 15px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #0d2335;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    grid-gap: 10px;
+    place-items: center;
+}
+
+section.container-menus .store-item button i {
+   color: #fff;
+   font-size: 16px;
+}
+
+section.container-menus .store--no-date-item button i {
+    color: #fff;
+    font-size: 16px;
+ }
+
+section.container-menus .store-item-no-date button {
+    padding: 15px 15px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #0d2335;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    grid-gap: 10px;
+    place-items: center;
+}
+
+section.container-menus .store-item button:hover {
+    color: #fff;
+    background-color: #3d4549;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+
+section.container-menus .store-item-no-date button:hover {
+    color: #fff;
+    background-color: #3d4549;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+
+section.container-menus .store-item span.span-1 {
+    grid-area: span-1;
+    color: #95848a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+section.container-menus .store-item-no-date span.span-1 {
+    grid-area: span-1;
+    color: #95848a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+section.container-menus .store-item span.span-1-special {
+    grid-area: span-1;
+    color: #95848a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+
+section.container-menus .store-item-no-date span.span-1-special {
+    grid-area: span-1;
+    color: #95848a;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+
+section.container-menus .store-item span.span-2 {
+    grid-area: span-2;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item-no-date span.span-2 {
+    grid-area: span-2;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item span.span-3-item {
+    grid-area: span-3-item;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item-no-date span.span-3-item {
+    grid-area: span-3-item;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item span.span-4-item {
+    grid-area: span-4-item;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item-no-date span.span-4-item {
+    grid-area: span-4-item;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.container-menus .store-item .span-wrapper-item {
+    display: grid;
+    grid-template: 
+    "span-1" 0.25fr
+    "span-2" 0.25fr
+    "span-3-item" 0.25fr
+    "span-4-item" 0.25fr /
+    1fr;
+    grid-gap: 10px;
+}
+
+section.container-menus .store-item-no-date .span-wrapper-item {
+    display: grid;
+    grid-template: 
+    "span-1" 0.25fr
+    "span-2" 0.25fr
+    "span-3-item" 0.25fr
+    "span-4-item" 0.25fr /
+    1fr;
+    grid-gap: 10px;
+}
+
+section.container-menus .store-item span.new-item-date {
+    font-size: 16px;
+    color: #c22048;
+    font-style: italic;
+    font-weight: 900;
+}
+
+section.container-menus .store-item-no-date span.new-item-date {
+    font-size: 16px;
+    color: #c22048;
+    font-style: italic;
+    font-weight: 900;
+}

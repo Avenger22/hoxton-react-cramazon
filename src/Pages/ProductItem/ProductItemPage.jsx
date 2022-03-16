@@ -1,6 +1,6 @@
 // #region 'Importing'
 import "./ProductItem.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 // #endregion
@@ -13,24 +13,17 @@ export default function ProductItemPage() {
 
     const params = useParams()
     const navigate = useNavigate()
-
+    const [productItem, setProductItem] = useState(null)
+    
     function getIndividualProductFromServer () {
 
-        fetch(`https://albvitafitness.glitch.me/items/${params.id}`)
+        fetch(`http://localhost:4000/items/${params.id}`)
             .then(resp => resp.json())
             .then(productFromServer => setProductItem(productFromServer))
     
     }
 
-    function getInitialRelatedItemsFromServer () {
-    
-        fetch("https://albvitafitness.glitch.me/items")
-            .then(resp => resp.json())
-            .then(itemsFromServer => setInitialRelatedItems(itemsFromServer))
-    }
-
     useEffect(getIndividualProductFromServer, [])
-    useEffect(getInitialRelatedItemsFromServer, [])
 
     if (productItem === null) {
         return <main>Loading...</main>
@@ -42,12 +35,6 @@ export default function ProductItemPage() {
 
     const type = productItem.type
     const name = productItem.name
-
-    function filterCategory() {
-        return initialRelatedItems.filter(item => item.type === type && item.name !== name)
-    }
-    
-    const itemsCategory = filterCategory()
 
     return (
 
@@ -106,14 +93,6 @@ export default function ProductItemPage() {
                                     navigate(`/bag`)
                                 }}>
                                     Add to Bag
-                                </button>
-
-                                <button onClick={function (e) {
-                                    e.stopPropagation()
-                                    handleButtonAddFavorite(productItem)
-                                    navigate(`/favorites`)
-                                }}>
-                                    Add to Wishlist
                                 </button>
 
                             </div>

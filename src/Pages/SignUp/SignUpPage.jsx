@@ -1,19 +1,54 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css"
 
 export default function SignUpPage() {
     
     const navigate = useNavigate()
-    
+    const [users, setUsers] = useState([])
+    const [userName, setUserName] = useState('')
+    const [fullName, setFullName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [formSignUp, setFormSignUp] = useState(null)
+
     function getUsersFromServer() {
     
-        fetch("https://albvitafitness.glitch.me/users")
+        fetch("http://localhost:4000/users")
             .then(resp => resp.json())
             .then(usersFromServer => {
             setUsers(usersFromServer)
         })
     
+    }
+
+    function handleUserNameChangeSignUp(e) {
+        setUserName(e.target.value)
+    }
+
+    function handleFormSubmitSignUp(e) {
+
+        const formData = {
+            fullName: fullName,
+            userName: userName,
+            email: email,
+            password: password
+        }
+
+        setFormSignUp(formData)
+
+    }
+
+    function handleFullNameChangeSignUp(e) {
+        setFullName(e.target.value)
+    }
+
+    function handleEmailChangeSignUp(e) {
+        setEmail(e.target.value)
+    }
+
+    function handlePasswordChangeSignUp(e) {
+        setPassword(e.target.value)
     }
 
     useEffect(getUsersFromServer, [])

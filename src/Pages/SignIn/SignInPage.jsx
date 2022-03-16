@@ -4,6 +4,38 @@ import './SignIn.css'
 
 export default function SignInPage() {
 
+    const navigate = useNavigate()
+
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const [formSignIn, setFormSignIn] = useState(null)
+
+    function handleUserNameChangeSignIn(e) {
+        e.preventDefault()
+        const userName = e.target.value 
+        setUserName(userName)
+    }
+
+    function handlePasswordChangeSignIn(e) {
+        e.preventDefault()
+        const password = e.target.value 
+        setPassword(password)
+    }
+
+    function handleFormSubmitSignIn(e) {
+        e.preventDefault()
+        const username = e.target.username.value
+        const password = e.target.password.value
+        
+        const formData = {
+            username: username,
+            password: password
+        }
+
+        setFormSignIn(formData)
+        navigate('/orders')
+    }
+
     return (
 
         <>
@@ -59,7 +91,7 @@ export default function SignInPage() {
                             Sign In
                         </button>
 
-                        <p>If you don't have an account, <Link to = {'/sign-up'}>sign up here</Link> !</p>
+                        <p>If you don't have an account, <Link to = {'/signup'}>sign up here</Link> !</p>
 
                     </div>
 

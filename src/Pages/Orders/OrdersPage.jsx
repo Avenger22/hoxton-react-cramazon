@@ -7,6 +7,7 @@ export default function OrdersPage() {
 
     const [items, setItems] = useState([])
     const navigate = useNavigate()
+    
     const bagItemsFiltered = items.filter(item => item?.quantity > 0)
 
     function calculateTotalBasket(baskedProductsParam) {
