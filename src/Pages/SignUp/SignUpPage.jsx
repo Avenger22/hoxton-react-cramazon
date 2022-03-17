@@ -164,7 +164,7 @@ export default function SignUpPage({user, setUser}) {
                             Sign Up
                         </button>
 
-                        <p>Already have an account, <Link to = "/sign-in">sign in here</Link> !</p>
+                        <p>Already have an account, <Link to = "/login">sign in here</Link> !</p>
 
                     </div>
 

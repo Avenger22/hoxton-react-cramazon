@@ -25,8 +25,8 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
                 <p>{product.name}</p>
 
                 <p>
-                    <span>Quantity: </span>
-                    <span>{product.quantity}</span>
+                    {/* <span>Quantity: </span> */}
+                    {/* <span>{product.quantity}</span> */}
                     <button>+</button>
                     <button>-</button>
                 </p>
@@ -40,7 +40,7 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
                 </button>
                 
                 <button onClick={function () {
-                    handleButtonRemoveBasket(product)
+                    // handleButtonRemoveBasket(product)
                 }}>X</button>
 
             </article>

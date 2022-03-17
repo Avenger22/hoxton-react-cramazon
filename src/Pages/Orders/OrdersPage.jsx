@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {useNavigate } from "react-router"
 import Order from "../../Components/Orders/Order"
 import "./Orders.css"
@@ -6,17 +6,61 @@ import HeaderCommon from "../../Components/Common/HeaderCommon"
 
 export default function OrdersPage({user, setUser}) {
 
-    const [items, setItems] = useState([])
-    const navigate = useNavigate()
-    
-    const bagItemsFiltered = items.filter(item => item?.quantity > 0)
+    // useEffect(() => {
 
-    function calculateTotalBasket(baskedProductsParam) {
+    //     if (localStorage.token) {
+    
+    //       fetch('http://localhost:4000/validate', {
+    //         method: 'POST',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ token: localStorage.token })
+    //       })
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    
+    //           if (data.error) {
+    //             // token was not good, we got an error back
+    //             alert('Invalid token!')
+    //           } 
+              
+    //           else {
+    //             // token is good, we get the user back
+    //             setUser(data)
+    //           }
+    
+    //         })
+    
+    //     }
+    
+    // }, [])
+      
+    const navigate = useNavigate()
+
+    function getOrderItem() {
+
+        let newArray = []
+
+        for (const order of user.orders) {
+            const item = order.item
+            newArray.push(item)
+        }
+
+        return newArray
+
+    }
+
+    
+    const orderItems = getOrderItem()
+    console.log(orderItems)
+
+    function calculateTotalBasket() {
 
         let total = 0
 
-        for (const product of baskedProductsParam) {
-            total += Number(product.price) * Number(product.quantity)
+        for (const order of user.orders) {
+            total += Number(order.item.price) * Number(order.quantity)
         }
 
         return total.toFixed(2)
@@ -24,7 +68,7 @@ export default function OrdersPage({user, setUser}) {
     }
 
     function filterTotalIndividual(productId) {
-        const array = bagItemsFiltered.filter(item => item.id === productId)
+        const array = orderItems.filter(item => item.id === productId)
         return array
     }
 
@@ -48,7 +92,7 @@ export default function OrdersPage({user, setUser}) {
 
                         {
 
-                            bagItemsFiltered.map(product =>
+                            orderItems.map(product =>
 
                                 <Order
                                     key={product.id}
@@ -63,7 +107,7 @@ export default function OrdersPage({user, setUser}) {
 
                     </ul>
 
-                    <h3>Your total: {calculateTotalBasket(bagItemsFiltered)}</h3>
+                    <h3>Your total: {calculateTotalBasket()}</h3>
 
                 </section>
 

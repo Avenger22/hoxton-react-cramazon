@@ -11,36 +11,6 @@ function App() {
 
   const [user, setUser] = useState(null)
   
-  useEffect(() => {
-
-    if (localStorage.token) {
-
-      fetch('http://localhost:4000/validate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token: localStorage.token })
-      })
-        .then(resp => resp.json())
-        .then(data => {
-
-          if (data.error) {
-            // token was not good, we got an error back
-            alert('Invalid token!')
-          } 
-          
-          else {
-            // token is good, we get the user back
-            setUser(data)
-          }
-
-        })
-
-    }
-
-  }, [])
-
   return (
 
     <>

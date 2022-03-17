@@ -1,19 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
 export default function SignInPage({user, setUser}) {
 
+    useEffect(() => {
+
+        if (localStorage.token) {
+    
+            fetch('http://localhost:4000/validate', {
+
+                method: 'POST',
+
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({ token: localStorage.token })
+
+            })
+            .then(resp => resp.json())
+            .then(data => {
+    
+                if (data.error) {
+                    // token was not good, we got an error back
+                    alert('Invalid token!')
+                } 
+                
+                else {
+                    // token is good, we get the user back
+                    setUser(data)
+                }
+    
+            })
+    
+        }
+    
+    }, [])
+
     const navigate = useNavigate()
 
-    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleUserNameChangeSignIn(e) {
+    function handleEmailChangeSignIn(e) {
         e.preventDefault()
-        const userName = e.target.value 
-        setUserName(userName)
+        const email = e.target.value 
+        setEmail(email)
     }
 
     function handlePasswordChangeSignIn(e) {
@@ -26,11 +60,11 @@ export default function SignInPage({user, setUser}) {
 
         e.preventDefault()
 
-        const username = e.target.username.value
+        const email = e.target.email.value
         const password = e.target.password.value
         
         const formData = {
-            username: username,
+            email:  email,
             password: password
         }
         
@@ -83,16 +117,16 @@ export default function SignInPage({user, setUser}) {
 
                         <label>
 
-                            <span>UserName : </span>
+                            <span>Email: </span>
                             
                             <input 
                                 // defaultValue = {userName} 
                                 required 
-                                name="username" 
+                                name="email" 
                                 type="text" 
-                                placeholder="Enter your username: " 
+                                placeholder="Enter your email: " 
                                 onChange={function (e) {
-                                    handleUserNameChangeSignIn(e)
+                                    handleEmailChangeSignIn(e)
                                 }}
                             />
 
@@ -100,7 +134,7 @@ export default function SignInPage({user, setUser}) {
 
                         <label>
 
-                            <span>Password</span>
+                            <span>Password: </span>
 
                             <input
                                 // defaultValue={password} 
