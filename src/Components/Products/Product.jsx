@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router"
 import "../Products/Product.css"
 
-function Product({item, user, items, setItems, orders, setOrders}) {
+function Product({item, user, items, orders, createOrder, handleButtonAddBasket}) {
 
     const navigate = useNavigate()
 
@@ -9,68 +9,6 @@ function Product({item, user, items, setItems, orders, setOrders}) {
         e.preventDefault()
         e.stopPropagation()
         navigate(`/products/${item.id}`)
-    }
-
-    function createOrder(item) {
-
-        let combination = false
-
-        for (const order of orders) {
-
-            if (order.userId === user.id && order.itemId === item.id) {
-                combination = true
-            }
-
-        }
-
-        if (combination === false) {
-            
-            const orderData = {
-                quantity: 1,
-                userId: user.id,
-                itemId: item.id
-            }
-
-            fetch('http://localhost:4000/orders', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-            },
-                body: JSON.stringify(orderData)
-            })
-            .then(resp => resp.json())
-            .then(data => {
-            
-                if (data.error) {
-                    alert(data.error)
-                } 
-                
-                else {
-                    setItems(data)
-                    navigate('/orders')
-                }
-
-            })
-
-        }
-
-        else {
-            alert("You cant add again from here, go to the bag and + button")
-        }
-
-    }
-
-    function handleButtonAddBasket(item) {
-
-        if (user) {
-            createOrder(item)
-            navigate("/orders")
-        }
-
-        else {
-            alert('You need to be signed in to add to bag')
-        }
-
     }
 
     return (

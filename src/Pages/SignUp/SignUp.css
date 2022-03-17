@@ -8,7 +8,7 @@ section.container-register {
     background-color: rgb(188, 188, 199);
 }
 
-form.form-register {
+section.container-register form.form-register {
     display: grid;
     grid-template-rows: 1fr;
     place-items: center;
@@ -19,7 +19,7 @@ form.form-register {
     background-color: rgb(255, 174, 53);
 }
 
-.container-form-register {
+section.container-register .container-form-register {
     display: grid;
     grid-template-rows: 0.05fr 0.2fr 0.2fr 0.2fr 0.2fr 0.1fr 0.05fr;
     grid-gap: 30px;
@@ -33,25 +33,25 @@ form.form-register {
     padding-bottom: 40px;
 }
 
-.container-form-register label {
+section.container-register .container-form-register label {
     display: grid;
     grid-template-rows: 50px 50px;
 }
 
-.container-form-register label input {
+section.container-register .container-form-register label input {
     outline: none;
     border: none;
     font-size: 18px;
     padding: 10px 10px;
 }
 
-.container-form-register label span {
+section.container-register .container-form-register label span {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: normal;
 }
 
-.container-form-register h1 {
+section.container-register .container-form-register h1 {
     font-size: 22px;
     font-weight: 800;
 
@@ -61,7 +61,7 @@ form.form-register {
     border-bottom: 3px solid rgb(17, 16, 16);
 }
 
-.container-form-register button {
+section.container-register .container-form-register button {
     padding: 15px 15px;
     outline: none;
     border: none;
@@ -77,12 +77,12 @@ form.form-register {
     font-weight: 600;
 }
 
-.container-form-register button:hover {
+section.container-register .container-form-register button:hover {
     color: #000;
     background-color: rgb(206, 88, 88);
 }
 
-.container-form-register p {
+section.container-register .container-form-register p {
     font-size: 16px;
     color: rgb(52, 50, 182);
 }

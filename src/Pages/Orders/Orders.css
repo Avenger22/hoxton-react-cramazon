@@ -1,24 +1,24 @@
 /* Basket */
-.bag-menus-wrapper {
+.bag-menus-wrapper .bag-menus-wrapper {
   display: grid;
   grid-template-rows: 160px 0.95fr 120px;
   height: auto;
   grid-gap: 30px;
 }
 
-.basket-container {
+.bag-menus-wrapper  .basket-container {
     width: 50vw;
     margin: 0 auto;
     padding-top: 100px;
     padding-bottom: 50px;
   }
   
-  .basket-container > h2 {
+  .bag-menus-wrapper  .basket-container > h2 {
     margin: 2rem 0;
     font-size: 2.5rem;
   }
   
-  .basket-container > ul {
+  .bag-menus-wrapper  .basket-container > ul {
     border: 1px solid gray;
     border-radius: 5px;
     height: 60vh;
@@ -26,33 +26,37 @@
     overflow-y: auto;
     scrollbar-width: thin;
     background-color: white;
-  }
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
   
-  .basket-container li {
+.bag-menus-wrapper  .basket-container li {
     margin-top: 1rem;
     padding: 1rem;
     border-top: 1px solid gray;
   }
   
-  .basket-container li:last-of-type {
+  .bag-menus-wrapper  .basket-container li:last-of-type {
     padding-bottom: 2rem;
     border-bottom: 1px solid gray;
   }
   
-  .basket-container h3 {
+  .bag-menus-wrapper  .basket-container h3 {
     margin-top: 2rem;
     margin-right: 2rem;
     text-align: right;
   }
   
-  .basket-container__item select {
+  .bag-menus-wrapper  .basket-container__item select {
     border: none;
     padding: 10px 10px;
     color: #1b1818;
     background-color: #d65050;
   }
 
-  .basket-container__item {
+  .bag-menus-wrapper .basket-container__item {
     display: grid;
     align-items: center;
     justify-items: center;
@@ -60,7 +64,7 @@
     grid-gap: 15px;
   }
 
-  .basket-container__item button {
+  .bag-menus-wrapper  .basket-container__item button {
     font-size: 14px;
     color: rgb(15, 14, 14);
     background-color: rgb(235, 54, 54);
@@ -76,7 +80,7 @@
     /* margin-right: 80px; */
 }
 
-.basket-container__item button:hover {
+.bag-menus-wrapper  .basket-container__item button:hover {
   transition: 1s;
   color: rgb(65, 56, 56);
   background-color: rgb(93, 200, 233);
@@ -86,7 +90,7 @@
   -o-transition: 1s;
 }
 
-.basket-container button.button-proceed-payment {
+.bag-menus-wrapper  .basket-container button.button-proceed-payment {
   padding: 15px 20px;
   border: none;
   color: rgb(240, 218, 218);
@@ -102,18 +106,18 @@
   margin-left: 200px;
 }
 
-.basket-container button.button-proceed-payment:hover {
+.bag-menus-wrapper  .basket-container button.button-proceed-payment:hover {
   transition: 1s;
   color: rgb(65, 56, 56);
   background-color: rgb(93, 200, 233);
 }
 
-.basket-container__item p {
+.bag-menus-wrapper  .basket-container__item p {
   font-size: 14px;
   font-weight: 600;
 }
 
-.basket-container__item span {
+.bag-menus-wrapper  .basket-container__item span {
   font-size: 12px;
   font-weight: 700;
 }

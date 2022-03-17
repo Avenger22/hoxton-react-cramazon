@@ -10,7 +10,7 @@ const randColour = ["green", "red", "blue", "yellow"][
     Math.floor(Math.random() * 4)
 ];
 
-export default function ProductItemPage({user, setUser, validateUser}) {
+export default function ProductItemPage({user, setUser, validateUser, handleButtonAddBasket}) {
 
     const params = useParams()
     const navigate = useNavigate()
@@ -101,7 +101,7 @@ export default function ProductItemPage({user, setUser, validateUser}) {
                                 <button onClick={function (e) {
                                     e.stopPropagation()
                                     handleButtonAddBasket(productItem)
-                                    navigate(`/bag`)
+                                    navigate(`/orders`)
                                 }}>
                                     Add to Bag
                                 </button>

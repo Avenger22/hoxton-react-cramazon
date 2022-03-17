@@ -8,7 +8,7 @@ section.container-login {
     background-color: rgb(188, 188, 199);
 }
 
-form.form-login {
+section.container-login form.form-login {
     display: grid;
     grid-template-rows: 1fr;
     place-items: center;
@@ -19,7 +19,7 @@ form.form-login {
     background-color: rgb(255, 174, 53);
 }
 
-.container-form {
+section.container-login .container-form {
     display: grid;
     grid-template-rows: 0.1fr 0.3fr 0.3fr 0.2fr 0.1fr;
     grid-gap: 30px;
@@ -33,25 +33,25 @@ form.form-login {
     padding-bottom: 30px;
 }
 
-.container-form label {
+section.container-login .container-form label {
     display: grid;
     grid-template-rows: 50px 50px;
 }
 
-.container-form label input {
+section.container-login .container-form label input {
     outline: none;
     border: none;
     font-size: 18px;
     padding: 10px 10px;
 }
 
-.container-form label span {
+section.container-login .container-form label span {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: normal;
 }
 
-.container-form h1 {
+section.container-login .container-form h1 {
     font-size: 22px;
     font-weight: 800;
 
@@ -61,7 +61,7 @@ form.form-login {
     border-bottom: 3px solid rgb(17, 16, 16);
 }
 
-.container-form button {
+section.container-login .container-form button {
     padding: 15px 15px;
     outline: none;
     border: none;
@@ -77,12 +77,12 @@ form.form-login {
     font-weight: 600;
 }
 
-.container-form button:hover {
+section.container-login .container-form button:hover {
     color: #000;
     background-color: rgb(206, 88, 88);
 }
 
-.container-form p {
+section.container-login .container-form p {
     font-size: 16px;
     color: rgb(52, 50, 182);
 }
