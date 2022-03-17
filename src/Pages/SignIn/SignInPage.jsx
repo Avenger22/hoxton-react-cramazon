@@ -3,46 +3,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function SignInPage({user, setUser}) {
+export default function SignInPage({user, setUser, validateUser}) {
 
     useEffect(() => {
-
-        if (localStorage.token) {
-    
-            fetch('http://localhost:4000/validate', {
-
-                method: 'POST',
-
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-
-                body: JSON.stringify({ token: localStorage.token })
-
-            })
-            .then(resp => resp.json())
-            .then(data => {
-    
-                if (data.error) {
-                    // token was not good, we got an error back
-                    alert('Invalid token!')
-                } 
-                
-                else {
-                    // token is good, we get the user back
-                    setUser(data)
-                }
-    
-            })
-    
-        }
-    
+        validateUser()
     }, [])
-
+    
     const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
 
     function handleEmailChangeSignIn(e) {
         e.preventDefault()
@@ -93,6 +64,10 @@ export default function SignInPage({user, setUser}) {
 
     }
 
+    if (user) {
+        navigate("/orders")
+    }
+    
     return (
 
         <>

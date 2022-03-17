@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css"
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function SignUpPage({user, setUser}) {
+export default function SignUpPage({user, setUser, validateUser}) {
     
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
@@ -20,6 +20,14 @@ export default function SignUpPage({user, setUser}) {
             setUsers(usersFromServer)
         })
     
+    }
+
+    useEffect(() => {
+        validateUser()
+    }, [])
+
+    if (user) {
+        navigate("/orders")
     }
 
     function handleUserNameChangeSignUp(e) {

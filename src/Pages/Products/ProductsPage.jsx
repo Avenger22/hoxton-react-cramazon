@@ -2,19 +2,24 @@ import { useState, useEffect } from "react"
 import Product from "../../Components/Products/Product"
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function ProductsPage({user, setUser}) {
+export default function ProductsPage({user, setUser, validateUser}) {
 
+    useEffect(() => {
+        validateUser()
+    }, [])
+    
     const [items, setItems] = useState([])
+    const [orders, setOrders] = useState([])
 
-    function getItemsFromServer() {
+    function getOrdersFromServer() {
 
-        fetch(`http://localhost:4000/items`)
+        fetch(`http://localhost:4000/orders`)
         .then(resp => resp.json())
-        .then(itemsFromServer => setItems(itemsFromServer))
+        .then(ordersFromServer => setOrders(ordersFromServer))
 
     }
 
-    useEffect(getItemsFromServer, [])
+    useEffect(getOrdersFromServer, [])
 
     return (
 
@@ -40,6 +45,8 @@ export default function ProductsPage({user, setUser}) {
                                 user = {user}
                                 items = {items}
                                 setItems = {setItems}
+                                orders = {orders}
+                                setOrders = {setOrders}
                             />
                             
                         )

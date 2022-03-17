@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router"
 import "../Products/Product.css"
 
-function Product({item, user, items, setItems}) {
+function Product({item, user, items, setItems, orders, setOrders}) {
 
     const navigate = useNavigate()
 
@@ -11,31 +11,60 @@ function Product({item, user, items, setItems}) {
         navigate(`/products/${item.id}`)
     }
 
+    function createOrder(item) {
+
+        let combination = false
+
+        for (const order of orders) {
+
+            if (order.userId === user.id && order.itemId === item.id) {
+                combination = true
+            }
+
+        }
+
+        if (combination === false) {
+            
+            const orderData = {
+                quantity: 1,
+                userId: user.id,
+                itemId: item.id
+            }
+
+            fetch('http://localhost:4000/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+            },
+                body: JSON.stringify(orderData)
+            })
+            .then(resp => resp.json())
+            .then(data => {
+            
+                if (data.error) {
+                    alert(data.error)
+                } 
+                
+                else {
+                    setItems(data)
+                    navigate('/orders')
+                }
+
+            })
+
+        }
+
+        else {
+            alert("You cant add again from here, go to the bag and + button")
+        }
+
+    }
+
     function handleButtonAddBasket(item) {
 
         if (user) {
-
-            let itemsCopy = JSON.parse(JSON.stringify(items))
-            const index = itemsCopy.findIndex(target => target.id === item.id)
-            const item = itemsCopy[index]
-
-            if (item.stock > 0) {
-
-                const newItem = {
-                    ...item,
-                    quantity: item.quantity ? item.quantity + 1 : 1,
-                    stock: item.stock - 1
-                }
-
-                itemsCopy[index] = newItem
-                setItems(itemsCopy)
-
-            }
-
-            else {
-                alert('You cannot add an item in the bag with no stock')
-            }
-
+            createOrder(item)
+            navigate("/orders")
         }
 
         else {

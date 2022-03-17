@@ -3,7 +3,7 @@ import { useNavigate } from "react-router"
 
 function Order({product, calculateTotalBasket, filterTotalIndividual}) {
 
-    const totalIndividualArray = filterTotalIndividual(product.id)
+    // const totalIndividualArray = filterTotalIndividual(product.id)
     const navigate = useNavigate()
 
     function handleRedirectBack() {
@@ -18,7 +18,7 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
 
                 <img
                     src = {product.image}
-                    alt = {product.description}
+                    // alt = {product.description}
                     width="90"
                 />
 
@@ -32,7 +32,7 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
                 </p>
                 
                 <span>Stock: {product.stock}</span>
-                <p>Item total: {calculateTotalBasket(totalIndividualArray)}</p>
+                <p>Item total: {calculateTotalBasket()}</p>
                 
                 <button 
                 onClick={handleRedirectBack}>

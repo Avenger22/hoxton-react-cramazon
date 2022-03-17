@@ -3,12 +3,13 @@ import './HeaderCommon.css'
 
 export default function HeaderCommon({user, setUser}) {
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     function handleLogOut(e) {
         e.preventDefault()
         localStorage.removeItem('token')
         setUser(null)
+        navigate("/login")
     }
 
     return (

@@ -4,45 +4,23 @@ import Order from "../../Components/Orders/Order"
 import "./Orders.css"
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function OrdersPage({user, setUser}) {
-
-    // useEffect(() => {
-
-    //     if (localStorage.token) {
-    
-    //       fetch('http://localhost:4000/validate', {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ token: localStorage.token })
-    //       })
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    
-    //           if (data.error) {
-    //             // token was not good, we got an error back
-    //             alert('Invalid token!')
-    //           } 
-              
-    //           else {
-    //             // token is good, we get the user back
-    //             setUser(data)
-    //           }
-    
-    //         })
-    
-    //     }
-    
-    // }, [])
+export default function OrdersPage({user, setUser, validateUser}) {
       
     const navigate = useNavigate()
+
+    useEffect(() => {
+        validateUser()
+    }, [])
+
+    if (user === null) {
+        return <main>Loading...</main>
+    }
 
     function getOrderItem() {
 
         let newArray = []
 
-        for (const order of user.orders) {
+        for (const order of user?.orders) {
             const item = order.item
             newArray.push(item)
         }
@@ -59,8 +37,8 @@ export default function OrdersPage({user, setUser}) {
 
         let total = 0
 
-        for (const order of user.orders) {
-            total += Number(order.item.price) * Number(order.quantity)
+        for (const order of user?.orders) {
+            total += order.item.price * Number(order.quantity)
         }
 
         return total.toFixed(2)

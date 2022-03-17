@@ -10,7 +10,7 @@ const randColour = ["green", "red", "blue", "yellow"][
     Math.floor(Math.random() * 4)
 ];
 
-export default function ProductItemPage({user, setUser}) {
+export default function ProductItemPage({user, setUser, validateUser}) {
 
     const params = useParams()
     const navigate = useNavigate()
@@ -25,6 +25,10 @@ export default function ProductItemPage({user, setUser}) {
     }
 
     useEffect(getIndividualProductFromServer, [])
+
+    useEffect(() => {
+        validateUser()
+    }, [])
 
     if (productItem === null) {
         return <main>Loading...</main>

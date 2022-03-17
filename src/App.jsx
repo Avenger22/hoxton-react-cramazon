@@ -11,6 +11,32 @@ function App() {
 
   const [user, setUser] = useState(null)
   
+  function validateUser () {
+
+    if (localStorage.token) {
+        
+        fetch('http://localhost:4000/validate', {
+          headers: {
+              Authorization: localStorage.token
+          }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+
+            if (data.error) {
+              console.log('Validation failed.')
+            } 
+            
+            else {
+              setUser(data)
+            }
+
+        })
+
+    }
+
+  }
+  
   return (
 
     <>
@@ -24,27 +50,27 @@ function App() {
 
         <Route 
           path = "/login" 
-          element = {<SignInPage user = {user} setUser = {setUser} />}>
+          element = {<SignInPage user = {user} setUser = {setUser} validateUser = {validateUser} />}>
         </Route>
 
         <Route 
           path = "/products" 
-          element = {<ProductsPage user = {user} setUser = {setUser} />}>
+          element = {<ProductsPage user = {user} setUser = {setUser} validateUser = {validateUser} />}>
         </Route>
 
         <Route 
             path = "/products/:id" 
-            element = {<ProductItemPage user = {user} setUser = {setUser} />}>
+            element = {<ProductItemPage user = {user} setUser = {setUser} validateUser = {validateUser}/>}>
         </Route>
 
         <Route 
             path = "/orders" 
-            element = {<OrdersPage user = {user} setUser = {setUser} />}>
+            element = {<OrdersPage user = {user} setUser = {setUser} validateUser = {validateUser} />}>
         </Route>
 
         <Route 
             path = "/signup" 
-            element = {<SignUpPage user = {user} setUser = {setUser} />}>
+            element = {<SignUpPage user = {user} setUser = {setUser} validateUser = {validateUser} />}>
         </Route>
 
       </Routes>
