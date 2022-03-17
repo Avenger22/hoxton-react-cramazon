@@ -4,23 +4,21 @@ import Order from "../../Components/Orders/Order"
 import "./Orders.css"
 import HeaderCommon from "../../Components/Common/HeaderCommon"
 
-export default function OrdersPage({user, setUser, validateUser}) {
+export default function OrdersPage({user, setUser, validateUser, handleButtonRemoveBasket}) {
       
-    const navigate = useNavigate()
-
     useEffect(() => {
         validateUser()
     }, [])
 
     if (user === null) {
-        return <main>Loading...</main>
+        return <main>Loading.....</main>
     }
 
-    function getOrderItem() {
+    function getOrdersItems() {
 
         let newArray = []
 
-        for (const order of user?.orders) {
+        for (const order of user.orders) {
             const item = order.item
             newArray.push(item)
         }
@@ -29,9 +27,24 @@ export default function OrdersPage({user, setUser, validateUser}) {
 
     }
 
+    function getOrder(productId) {
+
+        let newArray = []
+
+        for (const order of user.orders) {
+
+            if (order.itemId === productId) {
+                newArray.push(order)
+            }
+
+        }
+
+        return newArray
+
+    }
+
     
-    const orderItems = getOrderItem()
-    console.log(orderItems)
+    const orderItems = getOrdersItems()
 
     function calculateTotalBasket() {
 
@@ -46,8 +59,26 @@ export default function OrdersPage({user, setUser, validateUser}) {
     }
 
     function filterTotalIndividual(productId) {
-        const array = orderItems.filter(item => item.id === productId)
+
+        const newOrderItems = [...orderItems]
+        const array = newOrderItems.filter(item => item.itemId === productId)
         return array
+        
+    }
+
+    function calculateIndividualItemBasket(productId) {
+
+        let total = 0
+        const arrayFiltered = filterTotalIndividual(productId)
+
+        for (const order of arrayFiltered) {
+            total += order.item.price * order.quantity
+        }
+
+        console.log(total)
+
+        return total.toFixed(2)
+
     }
 
     return (
@@ -57,7 +88,7 @@ export default function OrdersPage({user, setUser, validateUser}) {
             <HeaderCommon 
                 user = {user}
                 //@ts-ignore
-                serUser = {setUser}
+                setUser = {setUser}
             />
 
             <div className="bag-menus-wrapper">
@@ -76,7 +107,11 @@ export default function OrdersPage({user, setUser, validateUser}) {
                                     key={product.id}
                                     product={product}
                                     calculateTotalBasket={calculateTotalBasket}
-                                    filterTotalIndividual={filterTotalIndividual}
+                                    //@ts-ignore
+                                    calculateIndividualItemBasket={calculateIndividualItemBasket}
+                                    //@ts-ignore
+                                    handleButtonRemoveBasket = {handleButtonRemoveBasket}
+                                    getOrder = {getOrder}
                                 />
 
                             )

@@ -19,7 +19,7 @@ export default function ProductsPage(
             <HeaderCommon 
                 user = {user}
                 //@ts-ignore
-                serUser = {setUser}
+                setUser = {setUser}
             />
 
             <section className="page-wrapper">

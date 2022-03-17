@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
 
-function Order({product, calculateTotalBasket, filterTotalIndividual}) {
+function Order({product, calculateTotalBasket, handleButtonRemoveBasket, calculateIndividualItemBasket, getOrder}) {
 
-    // const totalIndividualArray = filterTotalIndividual(product.id)
     const navigate = useNavigate()
 
     function handleRedirectBack() {
         navigate(`/products/${product.id}`)
     }
+
+    const itemOrder = getOrder(product.id)
+    console.log(itemOrder)
 
     return (
 
@@ -25,14 +27,14 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
                 <p>{product.name}</p>
 
                 <p>
-                    {/* <span>Quantity: </span> */}
-                    {/* <span>{product.quantity}</span> */}
+                    <span>Quantity: </span>
+                    <span>{itemOrder.quantity}</span> 
                     <button>+</button>
                     <button>-</button>
                 </p>
                 
                 <span>Stock: {product.stock}</span>
-                <p>Item total: {calculateTotalBasket()}</p>
+                <p>Item total: {calculateIndividualItemBasket(product.id)}</p>
                 
                 <button 
                 onClick={handleRedirectBack}>
@@ -40,7 +42,7 @@ function Order({product, calculateTotalBasket, filterTotalIndividual}) {
                 </button>
                 
                 <button onClick={function () {
-                    // handleButtonRemoveBasket(product)
+                    handleButtonRemoveBasket(product)
                 }}>X</button>
 
             </article>

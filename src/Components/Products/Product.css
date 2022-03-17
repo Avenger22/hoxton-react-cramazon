@@ -1,4 +1,4 @@
-section.page-wrapper ul.products.wrapper .store-item {
+.store-item {
     display: grid;
     grid-template-rows: 0.1fr 0.5fr 0.1fr 0.2fr 40px;
     grid-gap: 10px 15px;
@@ -6,7 +6,7 @@ section.page-wrapper ul.products.wrapper .store-item {
     padding: 15px 15px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date {
+ .store-item-no-date {
     display: grid;
     grid-template-rows: 0.6fr 0.1fr 0.2fr 40px;
     grid-gap: 15px 15px;
@@ -14,7 +14,7 @@ section.page-wrapper ul.products.wrapper .store-item-no-date {
     padding: 15px 15px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item:hover {
+ .store-item:hover {
     border: 1px solid #d40a0a;
     margin-right: 1%;
     margin-left: 1%;
@@ -30,7 +30,7 @@ section.page-wrapper ul.products.wrapper .store-item:hover {
     -o-transform: scale(1.02);
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date:hover {
+ .store-item-no-date:hover {
     border: 1px solid #d40a0a;
     margin-right: 2%;
     margin-left: 2%;
@@ -46,33 +46,33 @@ section.page-wrapper ul.products.wrapper .store-item-no-date:hover {
     -o-transform: scale(1.1);
 }
 
-section.page-wrapper ul.products.wrapper .store-item:hover .span-2 {
+ .store-item:hover .span-2 {
     font-size: 14px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item h2 {
+ .store-item h2 {
     font-size: 16px;
     font-weight: 700;
     color: #0066cc;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date h2 {
+ .store-item-no-date h2 {
     font-size: 16px;
     font-weight: 700;
     color: #0066cc;
 }
 
-section.page-wrapper ul.products.wrapper .store-item img {
+ .store-item img {
     height: 180px;
     width: 190px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date img {
+ .store-item-no-date img {
     height: 170px;
     width: 190px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item button {
+ .store-item button {
     padding: 15px 15px;
     border: none;
     outline: none;
@@ -92,17 +92,17 @@ section.page-wrapper ul.products.wrapper .store-item button {
     place-items: center;
 }
 
-section.page-wrapper ul.products.wrapper .store-item button i {
+ .store-item button i {
    color: #fff;
    font-size: 16px;
 }
 
-section.page-wrapper ul.products.wrapper .store--no-date-item button i {
+ .store--no-date-item button i {
     color: #fff;
     font-size: 16px;
  }
 
- section.page-wrapper ul.products.wrapper .store-item-no-date button {
+  .store-item-no-date button {
     padding: 15px 15px;
     border: none;
     outline: none;
@@ -122,7 +122,7 @@ section.page-wrapper ul.products.wrapper .store--no-date-item button i {
     place-items: center;
 }
 
-section.page-wrapper ul.products.wrapper .store-item button:hover {
+ .store-item button:hover {
     color: #fff;
     background-color: #3d4549;
     transition: 1s;
@@ -132,7 +132,7 @@ section.page-wrapper ul.products.wrapper .store-item button:hover {
     -o-transition: 1s;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date button:hover {
+ .store-item-no-date button:hover {
     color: #fff;
     background-color: #3d4549;
     transition: 1s;
@@ -142,7 +142,7 @@ section.page-wrapper ul.products.wrapper .store-item-no-date button:hover {
     -o-transition: 1s;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.span-1 {
+ .store-item span.span-1 {
     grid-area: span-1;
     color: #95848a;
     font-size: 13px;
@@ -150,7 +150,7 @@ section.page-wrapper ul.products.wrapper .store-item span.span-1 {
     text-decoration: none;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.span-1 {
+ .store-item-no-date span.span-1 {
     grid-area: span-1;
     color: #95848a;
     font-size: 13px;
@@ -158,7 +158,7 @@ section.page-wrapper ul.products.wrapper .store-item-no-date span.span-1 {
     text-decoration: none;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.span-1-special {
+ .store-item span.span-1-special {
     grid-area: span-1;
     color: #95848a;
     font-size: 13px;
@@ -166,7 +166,7 @@ section.page-wrapper ul.products.wrapper .store-item span.span-1-special {
     text-decoration: line-through;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.span-1-special {
+ .store-item-no-date span.span-1-special {
     grid-area: span-1;
     color: #95848a;
     font-size: 13px;
@@ -174,43 +174,43 @@ section.page-wrapper ul.products.wrapper .store-item-no-date span.span-1-special
     text-decoration: line-through;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.span-2 {
+ .store-item span.span-2 {
     grid-area: span-2;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.span-2 {
+ .store-item-no-date span.span-2 {
     grid-area: span-2;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.span-3-item {
+ .store-item span.span-3-item {
     grid-area: span-3-item;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.span-3-item {
+ .store-item-no-date span.span-3-item {
     grid-area: span-3-item;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.span-4-item {
+ .store-item span.span-4-item {
     grid-area: span-4-item;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.span-4-item {
+ .store-item-no-date span.span-4-item {
     grid-area: span-4-item;
     font-size: 13px;
     font-weight: 700;
 }
 
-section.page-wrapper ul.products.wrapper .store-item .span-wrapper-item {
+ .store-item .span-wrapper-item {
     display: grid;
     grid-template: 
     "span-1" 0.25fr
@@ -221,7 +221,7 @@ section.page-wrapper ul.products.wrapper .store-item .span-wrapper-item {
     grid-gap: 10px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date .span-wrapper-item {
+ .store-item-no-date .span-wrapper-item {
     display: grid;
     grid-template: 
     "span-1" 0.25fr
@@ -232,14 +232,14 @@ section.page-wrapper ul.products.wrapper .store-item-no-date .span-wrapper-item 
     grid-gap: 10px;
 }
 
-section.page-wrapper ul.products.wrapper .store-item span.new-item-date {
+ .store-item span.new-item-date {
     font-size: 16px;
     color: #c22048;
     font-style: italic;
     font-weight: 900;
 }
 
-section.page-wrapper ul.products.wrapper .store-item-no-date span.new-item-date {
+ .store-item-no-date span.new-item-date {
     font-size: 16px;
     color: #c22048;
     font-style: italic;

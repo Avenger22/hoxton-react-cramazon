@@ -1,12 +1,6 @@
-section.page-wrapper {
+section .page-wrapper {
     height: auto;
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-}
-
-section.page-wrapper .products.wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 0.25fr);
-    grid-gap: 25px;
 }

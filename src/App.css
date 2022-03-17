@@ -5,3 +5,9 @@ a {
   li {
     list-style: none;
   }
+
+  section.page-wrapper .products.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 0.25fr);
+    grid-gap: 25px;
+}

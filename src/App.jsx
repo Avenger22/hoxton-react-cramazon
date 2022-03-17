@@ -64,51 +64,80 @@ function App() {
 
     let combination = false
 
-    //@ts-ignore
     for (const order of orders) {
 
-        //@ts-ignore
-        if (order.userId === user.id && order.itemId === item.id) {
-            combination = true
-        }
+      if (order.userId === user.id && order.itemId === item.id) {
+          combination = true
+      }
 
     }
 
     if (combination === false) {
         
-        const orderData = {
-            quantity: 1,
-            userId: user.id,
-            itemId: item.id
-        }
+      const orderData = {
+          quantity: 1,
+          userId: user.id,
+          itemId: item.id
+      }
 
-        fetch('http://localhost:4000/orders', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              Authorization: localStorage.token
-          },
-          body: JSON.stringify(orderData)
-        })
-        .then(resp => resp.json())
-        .then(data => {
-        
-            if (data.error) {
-                alert(data.error)
-            } 
-            
-            else {
-                setOrders(data)
-                navigate('/orders')
-            }
+      fetch('http://localhost:4000/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: localStorage.token
+        },
+        body: JSON.stringify(orderData)
+      })
+      .then(resp => resp.json())
+      .then(data => {
+      
+          if (data.error) {
+              alert(data.error)
+          } 
+          
+          else {
+              const newArray = [...orders, data]
+              setOrders(newArray)
+              navigate('/orders')
+          }
 
-        })
+      })
 
     }
 
     else {
         alert("You cant add again from here, go to the bag and + button")
     }
+
+  }
+
+  function deleteOrder(item) {
+    
+    const ordersArray = [...orders]
+    const getOrder = ordersArray.find(order => order.itemId === item.id && order.userId === user.id)
+    
+    fetch(`http://localhost:4000/orders/${getOrder.id}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.token
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    
+      if (data.error) {
+        alert(data.error)
+      } 
+        
+      else {
+        // const filteredDeleted = orders.filter(item => item.id !== data.id)
+        console.log(data)
+        setOrders(data)
+        navigate('/orders')
+      }
+
+    })
 
   }
 
@@ -122,6 +151,18 @@ function App() {
       else {
           alert('You need to be signed in to add to bag')
       }
+
+  }
+
+  function handleButtonRemoveBasket(item) {
+
+    if (user) {
+      deleteOrder(item)
+    }
+
+    else {
+      alert('You need to be signed in to add to bag')
+    }
 
   }
   
@@ -171,7 +212,7 @@ function App() {
 
         <Route 
             path = "/orders" 
-            element = {<OrdersPage user = {user} setUser = {setUser} validateUser = {validateUser} />}>
+            element = {<OrdersPage user = {user} setUser = {setUser} validateUser = {validateUser}  handleButtonRemoveBasket = {handleButtonRemoveBasket} />}>
         </Route>
 
         <Route 

@@ -90,7 +90,7 @@ export default function SignUpPage({user, setUser, validateUser}) {
             <HeaderCommon 
                 user = {user}
                 //@ts-ignore
-                serUser = {setUser}
+                setUser = {setUser}
             />
 
             <section className="container-register">

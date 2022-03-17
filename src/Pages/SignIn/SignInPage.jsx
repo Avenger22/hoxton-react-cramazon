@@ -75,7 +75,7 @@ export default function SignInPage({user, setUser, validateUser}) {
             <HeaderCommon 
                 user = {user}
                 //@ts-ignore
-                serUser = {setUser}
+                setUser = {setUser}
             />
 
             <section className="container-login">

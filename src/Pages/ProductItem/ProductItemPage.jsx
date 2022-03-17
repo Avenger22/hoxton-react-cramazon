@@ -48,7 +48,7 @@ export default function ProductItemPage({user, setUser, validateUser, handleButt
             <HeaderCommon 
                 user = {user}
                 //@ts-ignore
-                serUser = {setUser}
+                setUser = {setUser}
             />
 
             <section className='container-product-item'>
